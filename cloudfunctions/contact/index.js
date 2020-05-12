@@ -4,7 +4,7 @@
  * @param {!express:Request} req HTTP request context.
  * @param {!express:Response} res HTTP response context.
  */
-const fecth = require('node-fetch');
+const fetch = require('node-fetch');
  
 exports.submit = async (req, res) => {
   const { method, body } = req;
