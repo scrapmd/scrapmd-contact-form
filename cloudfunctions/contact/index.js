@@ -8,9 +8,11 @@ const fetch = require('node-fetch');
  
 exports.submit = async (req, res) => {
   const { method, body } = req;
+  res.set('Access-Control-Allow-Origin', "*");
   if (method === 'OPTIONS') {
-    res.set('Access-Control-Allow-Origin', "*");
     res.set('Access-Control-Allow-Methods', 'POST');
+    res.set('Access-Control-Allow-Headers', 'Content-Type');
+    res.set('Access-Control-Max-Age', '3600');
     res.status('204').send('');
     return;
   }
