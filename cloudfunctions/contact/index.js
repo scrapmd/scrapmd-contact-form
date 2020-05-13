@@ -17,7 +17,7 @@ exports.submit = async (req, res) => {
     return;
   }
   if (method !== 'POST') {
-    res.status(400).send(`Method ${method} is not allowed.`);
+    res.status(405).send(`Method ${method} is not allowed.`);
     return;
   }
 
