@@ -11,7 +11,8 @@ function testInsert() {
     subject: 'yo',
     device: 'aaa',
     version: '111',
-    message: 'fodsa'
+    message: 'fodsa',
+    email: 'a@ngs.io'
   });
 }
 
@@ -21,6 +22,7 @@ function insert(data) {
   sheet.appendRow([
     new Date(),
     data.name,
+    data.email,
     data.subject,
     data.device,
     data.version,
