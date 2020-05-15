@@ -6,7 +6,8 @@
   "main": "Code.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "npx clasp push"
+    "push": "npx clasp push",
+    "deploy": "npx clasp deploy -i AKfycbxw-8ZtDkzQf_iiEcA1mTBNKHSLUX8LGt_yGmdb0RqXmpt5EfPP"
   },
   "keywords": [],
   "author": "",
