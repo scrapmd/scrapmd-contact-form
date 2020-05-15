@@ -1,0 +1,16 @@
+{
+  "name": "ci2go-contact-form-gas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "Code.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "clasp": "^1.0.0"
+  }
+}
