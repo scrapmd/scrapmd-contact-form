@@ -1,10 +1,10 @@
 on:
   push:
     branches:
-      - ci
+      - master
 
     paths:
-      - cloudfunctions/**.js
+      - cloudfunctions/**
       - .github/workflows/gcp.yml
 
 env:
