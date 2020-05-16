@@ -5,10 +5,10 @@
  * @param {!express:Response} res HTTP response context.
  */
 const fetch = require('node-fetch');
- 
+
 exports.submit = async (req, res) => {
   const { method, body } = req;
-  res.set('Access-Control-Allow-Origin', "*");
+  res.set('Access-Control-Allow-Origin', '*');
   if (method === 'OPTIONS') {
     res.set('Access-Control-Allow-Methods', 'POST');
     res.set('Access-Control-Allow-Headers', 'Content-Type');
@@ -22,15 +22,15 @@ exports.submit = async (req, res) => {
   }
 
   console.info(body);
-  
+
   const macroId = process.env.MACRO_ID;
   await fetch(`https://script.google.com/macros/s/${macroId}/exec`, {
     method: 'POST',
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   });
   res.status(200).send('ok');
 };
