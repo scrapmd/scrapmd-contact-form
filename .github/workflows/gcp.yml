@@ -1,0 +1,37 @@
+on:
+  push:
+    branches:
+      - ci
+
+    paths:
+      - cloudfunctions/**.js
+      - .github/workflows/gcp.yml
+
+env:
+  DEPLOYMENT_ID: ${{ secrets.DEPLOYMENT_ID }}
+  PROJECT_ID: ${{ secrets.PROJECT_ID }}
+  RUNTIME: nodejs10
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        function:
+          - contact
+    steps:
+      - uses: actions/checkout@v2
+      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: "286.0.0"
+          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          project_id: ${{ secrets.PROJECT_ID }}
+      - run: |
+          gcloud functions deploy ${{ matrix.function }} \
+            --trigger-http \
+            --set-env-vars "DEPLOYMENT_ID=${DEPLOYMENT_ID}" \
+            --runtime $RUNTIME \
+            --service-account=$SERVICE_ACCOUNT_EMAIL \
+            --source cloudfunctions/${{ matrix.function }} \
+            --allow-unauthenticated
