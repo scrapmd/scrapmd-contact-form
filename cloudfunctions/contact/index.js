@@ -23,7 +23,7 @@ exports.submit = async (req, res) => {
 
   console.info(body);
 
-  const macroId = process.env.MACRO_ID;
+  const macroId = process.env.DEPLOYMENT_ID;
   await fetch(`https://script.google.com/macros/s/${macroId}/exec`, {
     method: 'POST',
     headers: {
