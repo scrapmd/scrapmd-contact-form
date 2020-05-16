@@ -9,6 +9,7 @@ const fetch = require('node-fetch');
 exports.submit = async (req, res) => {
   const { method, body } = req;
   res.set('Access-Control-Allow-Origin', '*');
+
   if (method === 'OPTIONS') {
     res.set('Access-Control-Allow-Methods', 'POST');
     res.set('Access-Control-Allow-Headers', 'Content-Type');
@@ -16,6 +17,7 @@ exports.submit = async (req, res) => {
     res.status('204').send('');
     return;
   }
+
   if (method !== 'POST') {
     res.status(405).send(`Method ${method} is not allowed.`);
     return;
