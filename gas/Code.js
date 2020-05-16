@@ -16,6 +16,17 @@ function testInsert() {
   });
 }
 
+function testSendMail() {
+  sendMail({
+    name: 'test',
+    subject: 'yo',
+    device: 'aaa',
+    version: '111',
+    message: 'fodsa',
+    email: 'a@ngs.io',
+  });
+}
+
 function insert(data) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getActiveSheet();
@@ -28,4 +39,12 @@ function insert(data) {
     data.version,
     data.message,
   ]);
+}
+
+function sendMail(data) {
+    MailApp.sendEmail(
+      PropertiesService.getScriptProperties().getProperty('NOTIFICATION_EMAIL'),
+      `[webform] ${data.subject} (from: ${data.name}<${data.email}>)`,
+      `${data.message}\n\n----\nDevice: ${data.device}\nVersion: ${data.version}`
+    );
 }
