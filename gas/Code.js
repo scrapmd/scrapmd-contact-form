@@ -1,5 +1,6 @@
 function doPost(e) {
-  insert(JSON.parse(e.postData.contents));
+  var data = JSON.parse(e.postData.contents);
+  insert(data);
   sendMail(data);
   return ContentService.createTextOutput('{"message": "ok"}').setMimeType(
     ContentService.MimeType.JSON,
