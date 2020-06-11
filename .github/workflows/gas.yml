@@ -29,4 +29,3 @@ jobs:
       - run: npm install --global clasp
       - run: npx clasp push
       - run: npx clasp deploy -i $DEPLOYMENT_ID
-
